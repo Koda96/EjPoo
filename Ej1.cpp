@@ -14,6 +14,20 @@ float FloatRand( float MaxVal ){
 	return ((float)rand()/((float)RAND_MAX+1.0))*MaxVal;
 }
 
+template <class O> void ordenar ( O v[], int cantidad )  {
+    for (int i=0 ; i <= cantidad ; i++)
+      {
+         O aux=v[i];
+         int pos=i;
+         while ((pos>0)&&(v[pos-1]>aux))
+              {
+                                      v[pos]=v[pos-1];
+                                      pos--;
+              }
+         v[pos]=aux;
+      }
+}
+
 int main(){
 	int cantidad=0;
 	double tiempo1, dtiempo;
@@ -27,6 +41,8 @@ int main(){
     float* v2 = new float [cantidad];
 	for(int i=0;i<cantidad;i++)
     	v2[i]=FloatRand(99);
+    ordenar(v1,cantidad);
+    ordenar(v2,cantidad);
     imprimir(v1,cantidad);
     cout << endl;
     imprimir(v2,cantidad);
